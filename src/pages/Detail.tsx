@@ -9,16 +9,14 @@ interface PropsType {
 }
 
 interface StateType {
-  
   todos: TodoType;
-  
 }
 
 const Detail = () => {
-    const { detail_id } = useParams();
+  const { detail_id } = useParams();
 
-    const [todos, setTodos] = useState<TodoType[]>([]);
- 
+  const [todos, setTodos] = useState<TodoType[]>([]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,20 +28,18 @@ const Detail = () => {
           Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
         },
       })
-     ..then((data) => {
-        setTodos(data.data);
-      })
+      //  ..then((todo) => {
+      //     setTodos(data.data);
+      //   })
       .catch(function (error) {
         console.log(error);
-      })
-      
+      });
   }
 
-  
-    return (
-      <Layout>
-       <div className="bg-[url('../assets/svg.png')] bg-no-repeat">
-      <div className="lg:mx-20 p-4 rounded-md ">
+  return (
+    <Layout>
+      <div>
+        {/* <div className="lg:mx-20 p-4 rounded-md ">
         <div className="bg-white p-3 rounded-md mt-5">
           <div className="p-2 w-full rounded-md text-2xl bg-gray-200 font-bold">
             {data.content}
@@ -71,11 +67,10 @@ const Detail = () => {
             </div>
           </div>
         </div>
+      </div> */}
       </div>
-    </div>
-      </Layout>
-    );
-  }
+    </Layout>
+  );
 };
 
 export default Detail;
